@@ -1473,8 +1473,13 @@
         function salvar(b, d, slots) { let a = getAgenda(b); a[d] = slots; localStorage.setItem('agenda_' + b, JSON.stringify(a)); }
         function gerarSlots() { let o = {}; HORARIOS.forEach(h => { o[h] = { status: 'disponivel', cliente: '', tel: '' } }); return o; }
 
-        document.getElementById('logo').addEventListener('click', () => {
-            clicks++; if (clicks >= 3) { document.getElementById('modalAdmin').style.display = 'flex'; carregarAdmin(); clicks = 0; }
+        document.getElementById('logo').addEventListener('click', (e) => {
+            e.preventDefault();
+            clicks++; 
+            if (clicks >= 3) { 
+                window.location.href = 'agendamento.html'; 
+                clicks = 0; 
+            }
             setTimeout(() => clicks = 0, 1000);
         });
 
